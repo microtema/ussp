@@ -1,0 +1,126 @@
+<form>
+    <div class="form-group">
+        <label for="searchConfigName">Search config name:</label>
+
+        <div class="row">
+            <div class="col-md-4 col-xs-4">
+                <select class="form-control" id="searchConfigName">
+                    <option selected>Persons</option>
+                    <option>Departments</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <table class="form">
+        <tr>
+            <th>
+                <div class="form-group form-group-sm">
+                    <label for="firstName">FirstName and very long header</label>
+                    <div class="row">
+                        <div class="col-md-7 col-xs-7">
+                            <input class="form-control" id="firstName" placeholder="Search..."/>
+                        </div>
+                        <div class="col-md-4 col-xs-4">
+                            <select class="form-control">
+                                <option selected>EQUALS</option>
+                                <option>CONTAINS</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </th>
+            <th>
+                <div class="form-group form-group-sm">
+                    <label for="lastName">LastName oder Andy</label>
+                    <div class="row">
+                        <div class="col-md-7 col-xs-7">
+                            <input class="form-control" id="lastName" placeholder="Search..."/>
+                        </div>
+                        <div class="col-md-4 col-xs-4">
+                            <select class="form-control">
+                                <option>EQUALS</option>
+                                <option selected>CONTAINS</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </th>
+            <th>
+                <div class="form-group form-group-sm">
+                    <label>Birthday</label>
+                    <div class="row">
+                        <div class="col-md-7 col-xs-7">
+                            <input class="form-control" placeholder="Search..."/>
+                        </div>
+                        <div class="col-md-4 col-xs-4">
+                            <select class="form-control">
+                                <option selected>EQUALS</option>
+                                <option>CONTAINS</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </th>
+        </tr>
+        <tr>
+            <th>
+                <div class="form-group form-group-sm">
+                    <label for="firstName">Address</label>
+                    <div class="row">
+                        <div class="col-md-7 col-xs-7">
+                            <input class="form-control" id="Address" placeholder="Search..."/>
+                        </div>
+                        <div class="col-md-4 col-xs-4">
+                            <select class="form-control">
+                                <option selected>EQUALS</option>
+                                <option>CONTAINS</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </th>
+            <th>
+                <div class="form-group form-group-sm">
+                    <label for="lastName">Street</label>
+                    <div class="row">
+                        <div class="col-md-7 col-xs-7">
+                            <input class="form-control" id="Street" placeholder="Search..."/>
+                        </div>
+                        <div class="col-md-4 col-xs-4">
+                            <select class="form-control">
+                                <option>EQUALS</option>
+                                <option selected>CONTAINS</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </table>
+    <button type="reset" class="btn btn-default">Clear</button>
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+<hr>
+<div class="table-responsive">
+    <table class="table table-hover" data-height="200" data-row-style="rowStyle" >
+        <thead>
+        <tr class="info">
+            <th>FirsName</th>
+            <th>LastName</th>
+            <th>Birthday</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr (click)="person.selected = !person.selected" [ngClass]="person.selected ? 'info' : ''" *ngFor="#person of persons">
+            <td>{{person.firstName}}</td>
+            <td>{{person.lastName}}</td>
+            <td>{{person.dob | date:'MM/dd/yyyy'}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
