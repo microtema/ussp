@@ -19,13 +19,10 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="alert alert-info">
-                    <p>Willkommen zum User Self-Service Portal von neXus PRIME !
-                        <br>
-                        In diesem Nutzerportal können Sie Ihre elektronischen Ausweise, wie Chipkarten, Smart-Token und Zertifikate, verwalten.
-                        <br>
-                        Um sich mit Ihrer Chipkarte anzumelden, stecken Sie die Karte in den Kartenleser und klicken Sie 'Anmelden mit Chipkarte'.
-                        <br>
-                        Sie können auch eine alternative Methode nutzen, wobei dann manche Funktionen eventuell nicht verfügbar sind.</p>
+                    <p>Welcome to the User Self-Service Portal of neXus PRIME !<br>
+                        In this user portal, you can manage your credentials like smart cards, smart tokens and certificates.<br>
+                        To log in with your smart card, plug the card in the card reader and click on 'Smartcard login & other'.<br>
+                        You can also select an alternative login method, while some functions may not be available then.</p>
                 </div>
             </div>
         </div>
@@ -61,36 +58,30 @@
             <div class="modal-content">
                 <form class="form-horizontal" [ngFormModel]="loginForm" (submit)="doLogin(loginModal)">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" >&times;</button>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Login</h4>
                     </div>
                     <div class="modal-body">
-
-                        <div class="alert alert-info"><p>Melden Sie sich durch Angabe Ihres Benutzernamens und Kennworts an neXus PRIME an.
-                            <br>
-                            Drücken Sie auf 'Anmelden', um fortzufahren.</p></div>
+                        <div class="alert alert-info"><p>Log in to neXus PRIME by providing your user name and password.<br> Click on 'Log in' to proceed.</p></div>
                         <div class="form-group">
-                            <label for="inputUsername" class="col-sm-3 control-label">Benutzername:</label>
+                            <label for="inputUsername" class="col-sm-3 control-label">User name:</label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control" ngControl="userName" id="inputUsername" required>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputPassword" class="col-sm-3 control-label">Kennwort:</label>
+                            <label for="inputPassword" class="col-sm-3 control-label">Password:</label>
                             <div class="col-sm-9">
                                 <input type="password" class="form-control" ngControl="password" id="inputPassword" required>
                             </div>
                         </div>
-                        {{ loginForm.value | json}}
-                        {{ loginForm.valid}}
+                        <div *ngIf="errorMessage" class="alert alert-danger"><p>{{errorMessage}}</p></div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Anmelden</button>
+                        <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Login</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-
-
 </div>

@@ -16,20 +16,29 @@ export class AppComponent {
     doLogin(loginModal) {
         //alert(JSON.stringify(this.loginForm.value));
 
-        $(loginModal).modal('hide');
+        let controls = this.loginForm.value;
+        
+        let userName = controls['userName'];
+        let password = controls['password'];
 
-        this.hideLoginModal();
+        if (userName == 'admin' && password == 'admin') {
+            $(loginModal).modal('hide');
+            this.hideLoginModal();
+        } else {
+            this.errorMessage = "Unauthenticated user: Either the user name or the password you entered is not valid. Please try again."
+        }
+
     }
 
     commands = [
         {
-            label: "Anmelden mit Chipkarte"
+            label: "Smartcard login &other"
         },
         {
-            label: "Benutzerdefinierter Link"
+            label: "Custom external link"
         },
         {
-            label: "Anmelden", selected: true
+            label: "Login", selected: true
         }
     ];
 
@@ -48,6 +57,8 @@ export class AppComponent {
     set selectLanguage(selectedLanguage) {
         this.selectedLanguage = selectedLanguage;
     }
+
+    errorMessage:string = null;
 
     loginModalVisible = false;
 
