@@ -8,25 +8,21 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
+var core_1 = require("@angular/core");
 var SearchContentComponent = (function () {
     function SearchContentComponent() {
         this.persons = [
-            { 'firstName': 'Mario', 'lastName': 'Tema', 'dob': new Date() },
-            { 'firstName': 'Mario', 'lastName': 'Tema' },
-            { 'firstName': 'Mario', 'lastName': 'Tema', 'dob': new Date(), selected: true },
-            { 'firstName': 'Mario', 'lastName': 'Tema', 'dob': new Date() },
-            { 'firstName': 'Mario', 'lastName': 'Tema', 'dob': new Date() },
-            { 'firstName': 'Mario', 'lastName': 'Tema', 'dob': new Date() },
-            { 'firstName': 'Mario', 'lastName': 'Tema', 'dob': new Date() },
-            { 'firstName': 'Mario', 'lastName': 'Tema', 'dob': new Date() },
-            { 'firstName': 'Mario', 'lastName': 'Tema', 'dob': new Date() },
-            { 'firstName': 'Mario', 'lastName': 'Tema', 'dob': new Date() },
-            { 'firstName': 'Mario', 'lastName': 'Tema', 'dob': new Date() },
-            { 'firstName': 'Mario', 'lastName': 'Tema', 'dob': new Date() },
-            { 'firstName': 'Mario', 'lastName': 'Tema', 'dob': new Date() },
-            { 'firstName': 'Mario', 'lastName': 'Tema', 'dob': new Date() },
-            { 'firstName': 'Mario', 'lastName': 'Tema', 'dob': null }
+            { "firstName": "Mario", "lastName": "Tema", "dob": new Date() },
+            { "firstName": "Mario", "lastName": "Tema", "dob": new Date() },
+            { "firstName": "Mario", "lastName": "Tema", "dob": new Date() },
+            { "firstName": "Mario", "lastName": "Tema", "selected": true },
+            { "firstName": "Mario", "lastName": "Tema", "dob": null },
+            { "firstName": "Mario", "lastName": "Tema", "dob": new Date() },
+            { "firstName": "Mario", "lastName": "Tema", "dob": new Date() },
+            { "firstName": "Mario", "lastName": "Tema" },
+            { "firstName": "Mario", "lastName": "Tema", "dob": new Date() },
+            { "firstName": "Mario", "lastName": "Tema", "dob": new Date() },
+            { "firstName": "Mario", "lastName": "Tema", "dob": new Date() }
         ];
     }
     SearchContentComponent.prototype.search = function () {
@@ -34,8 +30,8 @@ var SearchContentComponent = (function () {
     };
     SearchContentComponent = __decorate([
         core_1.Component({
-            selector: 'search-content',
-            templateUrl: 'template/search/content/component.html'
+            selector: "search-content",
+            templateUrl: "template/search/content/component.html"
         }), 
         __metadata('design:paramtypes', [])
     ], SearchContentComponent);

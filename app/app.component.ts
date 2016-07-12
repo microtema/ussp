@@ -1,76 +1,37 @@
-import {Component} from '@angular/core';
-import {FormBuilder, Validators, ControlGroup, Control} from '@angular/common';
+import {Component} from "@angular/core";
+import {LanguageService, Language} from "./service/LanguageService"
+import {BuildInfoService, BuildInfo} from "./service/BuildInfoService";
+import {ROUTER_DIRECTIVES} from '@angular/router';
 declare var $:any;
 
 @Component({
-    selector: 'nexus-ussp',
-    templateUrl: 'template/component.html'
+    selector: "nexus-ussp",
+    templateUrl: "template/component.html",
+    providers: [LanguageService, BuildInfoService],
+    directives: [ROUTER_DIRECTIVES]
 })
 export class AppComponent {
 
-    loginForm = new ControlGroup({
-        userName: new Control("", Validators.required),
-        password: new Control("", Validators.required)
-    });
+    languages:Language[] = null;
 
-    doLogin(loginModal) {
-        //alert(JSON.stringify(this.loginForm.value));
+    selectedLanguage:Language = null;
 
-        let controls = this.loginForm.value;
-        
-        let userName = controls['userName'];
-        let password = controls['password'];
+    buildInfo:BuildInfo = null;
 
-        if (userName == 'admin' && password == 'admin') {
-            $(loginModal).modal('hide');
-            this.hideLoginModal();
-        } else {
-            this.errorMessage = "Unauthenticated user: Either the user name or the password you entered is not valid. Please try again."
-        }
+    constructor(private languageService:LanguageService, private buildInfoService:BuildInfoService) {
 
+        this.languages = languageService.getLanguages();
+        this.selectedLanguage = this.languages[2];
+
+        this.buildInfo = buildInfoService.getBuildInfo();
     }
 
-    commands = [
-        {
-            label: "Smartcard login &other"
-        },
-        {
-            label: "Custom external link"
-        },
-        {
-            label: "Login", selected: true
-        }
-    ];
-
-    executeCommand(command) {
-        this.showLoginModal();
-    }
-
-    languages = [{displayName: 'English'}, {displayName: 'German'}, {displayName: 'France', selected: true}];
-
-    selectedLanguage = this.languages[2];
 
     get selectLanguage() {
         return this.selectedLanguage;
     }
 
-    set selectLanguage(selectedLanguage) {
+    set selectLanguage(selectedLanguage:Language) {
         this.selectedLanguage = selectedLanguage;
     }
-
-    errorMessage:string = null;
-
-    loginModalVisible = false;
-
-    showLoginModal() {
-        this.loginModalVisible = true;
-    }
-
-    hideLoginModal() {
-        this.loginModalVisible = false;
-    }
-
-    buildVersion = "3.4.1.140";
-    productName = "neXus PRIME";
-    copyright = "Copyright © 2007-2016 Nexus Technology AB";
 }

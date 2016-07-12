@@ -15,73 +15,21 @@
         </div>
     </header>
 
-    <div class="body">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="alert alert-info">
-                    <p>Welcome to the User Self-Service Portal of neXus PRIME !<br>
-                        In this user portal, you can manage your credentials like smart cards, smart tokens and certificates.<br>
-                        To log in with your smart card, plug the card in the card reader and click on 'Smartcard login & other'.<br>
-                        You can also select an alternative login method, while some functions may not be available then.</p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-4 col-sm-offset-4">
-                <button data-toggle="modal" data-target="#loginModal" type="button" class="btn btn-default btn-lg btn-block" (click)="executeCommand(command)"
-                        [ngClass]="command.selected ? 'btn-primary' : ''"
-                        *ngFor="let command of commands">{{command.label}}
-                </button>
-            </div>
-        </div>
-    </div>
+    <router-outlet></router-outlet>
 
     <footer class="bs-docs-footer" role="contentinfo">
         <div class="row alert-info">
             <div class="col-md-10 col-md-offset-1">
                 <div class="pull-left">
-                    {{copyright}}
+                    {{buildInfo.copyright}}
                 </div>
                 <div class="pull-right">
-                    {{buildVersion}}
+                    {{buildInfo.buildVersion}}
                 </div>
                 <div class="pull-right">
-                    {{productName}}
+                    {{buildInfo.productName}}
                 </div>
             </div>
         </div>
     </footer>
-
-    <div class="modal fade" [ngClass]="hidden" role="dialog" id="loginModal" #loginModal>
-        <div class="modal-dialog modal-lg">
-
-            <div class="modal-content">
-                <form class="form-horizontal" [ngFormModel]="loginForm" (submit)="doLogin(loginModal)">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Login</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="alert alert-info"><p>Log in to neXus PRIME by providing your user name and password.<br> Click on 'Log in' to proceed.</p></div>
-                        <div class="form-group">
-                            <label for="inputUsername" class="col-sm-3 control-label">User name:</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" ngControl="userName" id="inputUsername" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputPassword" class="col-sm-3 control-label">Password:</label>
-                            <div class="col-sm-9">
-                                <input type="password" class="form-control" ngControl="password" id="inputPassword" required>
-                            </div>
-                        </div>
-                        <div *ngIf="errorMessage" class="alert alert-danger"><p>{{errorMessage}}</p></div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Login</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
 </div>

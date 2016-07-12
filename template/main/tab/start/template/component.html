@@ -1,0 +1,29 @@
+<div style="padding: 10px 15px">
+    <div class="alert alert-info">
+        <p *ngFor="let message of messages">
+            {{message}}
+        </p>
+    </div>
+
+    <div class="input-group input-group-lg">
+        <span class="input-group-addon" id="sizing-addon2"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
+        <input type="text" class="form-control" [(ngModel)]="query" placeholder="Search..." aria-describedby="sizing-addon2">
+    </div>
+
+    <hr>
+
+    <a *ngFor="let command of commands | commandPipe:query" href="javascript:0" type="button" class="btn btn-default btn-lg btn-block command-button">
+        <div class="row">
+            <div class="col-md-1 col-sm-1">
+                <div class="pull-left">
+                    <h4>{{command.displayName}}</h4>
+                </div>
+                <div class="pull-left">
+                    <h6>
+                        <div [innerHTML]="command.description"></div>
+                    </h6>
+                </div>
+            </div>
+        </div>
+    </a>
+</div>

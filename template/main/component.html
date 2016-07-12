@@ -1,0 +1,16 @@
+<div class="body">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <ul class="nav nav-tabs" role="tablist">
+                <li *ngFor="let tab of tabs" (click)="tab.visible=true" role="presentation" [class.active]="tab.active"><a [href]="'#'+tab.id" [attr.aria-controls]="tab.id"
+                                                                                                                      role="tab" data-toggle="tab">{{tab.displayName}}</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div *ngFor="let tab of tabs" role="tabpanel" class="tab-pane fade" [class.active]="tab.active" [class.in]="tab.active" [attr.id]="tab.id">
+                    <nexus-ussp-main-start *ngIf="tab.id === 'start' && (tab.active || tab.visible)"></nexus-ussp-main-start>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
