@@ -28,3 +28,48 @@ footer {
 .body {
     padding-top: 100px;
 }
+
+.command-button h4,
+.command-button h6 {
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.command-button {
+    padding-left: 60px;
+    background-position: 10px 50%;
+    background-repeat: no-repeat;
+}
+
+.tab-container {
+    padding: 10px 15px;
+    border: solid 1px #dddddd;
+    border-top: none;
+}
+
+.tab-container .command-button {
+    text-align: left;
+}
+
+.tab-container .tasks {
+    background-image: url("/image/post.png");
+}
+
+.tab-container .credentials {
+    background-image: url("/image/credentials.png");
+}
+
+.tab-container .request {
+    background-image: url("/image/request.png");
+}
+
+.tab-container .scim {
+    background-image: url("/image/scim.png");
+}
+
+.tab-container .card-production {
+    background-image: url("/image/card-production.png");
+    background-position: right 50%;
+    background-repeat: no-repeat;
+    height: 40px;
+}

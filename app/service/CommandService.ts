@@ -4,11 +4,12 @@ import {Injectable} from "@angular/core";
 export class CommandService {
 
     getCommands():Command[] {
-        return [new Command("Smartcard login & other"), new Command("Custom external link"), new Command("Login", null, true)];
+        return [new Command("smartcardlogin","Smartcard login & other"), new Command("externallink","Custom external link"), new Command("login","Login", null, true)];
     }
 }
 
 export class Command {
-    constructor(public displayName:string, public description?:string, public selected?:boolean) {
+    constructor(public id:string, public displayName:string, public description?:string, public selected?:boolean) {
+        
     }
 }

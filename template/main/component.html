@@ -9,6 +9,10 @@
             <div class="tab-content">
                 <div *ngFor="let tab of tabs" role="tabpanel" class="tab-pane fade" [class.active]="tab.active" [class.in]="tab.active" [attr.id]="tab.id">
                     <nexus-ussp-main-start *ngIf="tab.id === 'start' && (tab.active || tab.visible)"></nexus-ussp-main-start>
+                    <nexus-ussp-main-tasks *ngIf="tab.id === 'opentasks' && (tab.active || tab.visible)"></nexus-ussp-main-tasks>
+                    <nexus-ussp-main-credentials *ngIf="tab.id === 'credentials' && (tab.active || tab.visible)"></nexus-ussp-main-credentials>
+                    <nexus-ussp-main-requests *ngIf="tab.id === 'requests' && (tab.active || tab.visible)"></nexus-ussp-main-requests>
+                    <nexus-ussp-main-scim *ngIf="tab.id === 'scim' && (tab.active || tab.visible)"></nexus-ussp-main-scim>
                 </div>
             </div>
         </div>

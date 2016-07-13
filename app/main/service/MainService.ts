@@ -5,11 +5,11 @@ import {Injectable} from "@angular/core";
 export class MainService {
 
     tabs = [
-        new TabData("start", "Start", true),
-        new TabData("opentasks", "Open Tasks"),
+        new TabData("start", "Start"),
+        new TabData("opentasks", "Open Tasks", true),
         new TabData("credentials", "Credentials"),
         new TabData("requests", "Requests"),
-        new TabData("scimidentities", "SCIM Identities")
+        new TabData("scim", "SCIM Identities")
     ];
 
     getTabs():Promise<TabData[]> {
@@ -18,10 +18,7 @@ export class MainService {
 }
 
 export class TabData {
-    id:string = null;
-
-    constructor(public directive:string, public displayName:string, public active?:boolean) {
-        this.id = directive.toLowerCase().replace("-", "");
+    constructor(public id:string, public displayName:string, public active?:boolean) {
     }
 }
 

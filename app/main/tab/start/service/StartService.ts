@@ -5,12 +5,12 @@ import {Command} from "../../../../service/CommandService";
 export class StartService {
 
     commands = [
-        new Command("Open Tasks", "Look up and work on your open tasks. You have <span class='badge'>51</span> open tasks."),
-        new Command("Credentials", "View and manage your credentials. You have no credentials."),
-        new Command("Request"),
-        new Command("SCIM Identities"),
-        new Command("Read ICCNs"),
-        new Command("Substitute for Person")
+        new Command("tasks", "Open Tasks", "Look up and work on your open tasks. You have <span class='badge'>51</span> open tasks."),
+        new Command("credentials", "Credentials", "View and manage your credentials. You have no credentials."),
+        new Command("request", "Request"),
+        new Command("scim", "SCIM Identities"),
+        new Command("iccns", "Read ICCNs"),
+        new Command("substitute", "Substitute for Person")
     ];
 
     getCommands():Promise<Command[]> {
