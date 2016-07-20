@@ -1,0 +1,40 @@
+<div class="form-group">
+    <p [ngSwitch]="component.type">
+        <template ngSwitchCase="text">
+            <label>{{component.label}}</label>
+            <input type="text" class="form-control" [disabled]="component.disabled" [placeholder]="component.label"
+                   [(ngModel)]="component.value">
+        </template>
+        <template ngSwitchCase="password">
+            <label>{{component.label}}</label>
+            <input type="password" class="form-control" [disabled]="component.disabled" [placeholder]="component.label"
+                   [(ngModel)]="component.value">
+        </template>
+        <template ngSwitchCase="textarea">
+            <label>{{component.label}}</label>
+            <textarea class="form-control" [disabled]="component.disabled" [placeholder]="component.label"
+                      [(ngModel)]="component.value"></textarea>
+        </template>
+        <template [ngSwitchCase]="'checkbox'">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" [checked]="component.checked" [disabled]="component.disabled"
+                           [(ngModel)]="component.checked"> {{component.label}}
+                </label>
+            </div>
+        </template>
+        <template [ngSwitchCase]="'select'">
+            <label>{{component.label}}</label>
+            <select class="form-control" [disabled]="component.disabled" [(ngModel)]="component.value">
+                <option *ngFor="let option of component.options" [value]="option.value"
+                        [selected]="option.value === component.value">
+                    {{option.value}}
+                </option>
+            </select>
+        </template>
+        <template ngSwitchCase="button">
+            <button class="btn btn-default">{{component.label}}</button>
+        </template>
+        <template ngSwitchDefault>STOP! {{component.type}}</template>
+    </p>
+</div>

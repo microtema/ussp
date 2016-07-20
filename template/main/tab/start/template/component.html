@@ -8,16 +8,20 @@
     <div class="row">
         <div class="col-sm-6 col-md-6">
             <div class="input-group">
-                <span class="input-group-addon" id="sizing-addon2"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
-                <input type="text" class="form-control" [(ngModel)]="query" placeholder="Search..." aria-describedby="sizing-addon2">
-                <span class="input-group-addon" ><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></span>
+                <span class="input-group-addon" id="sizing-addon2"><span class="glyphicon glyphicon-search"
+                                                                         aria-hidden="true"></span></span>
+                <input type="text" class="form-control" [(ngModel)]="query" placeholder="Search..."
+                       aria-describedby="sizing-addon2">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"
+                                                      aria-hidden="true"></span></span>
             </div>
         </div>
     </div>
 
     <div class="input-group">&nbsp;</div>
 
-    <a *ngFor="let command of commands | commandPipe:query" href="javascript:0" type="button" [ngClass]="command.id" class="btn btn-default btn-block command-button" >
+    <a *ngFor="let command of commands | commandPipe:query" (click)="executeCommand(command)" href="javascript:0"
+       type="button" [ngClass]="command.id" class="btn btn-default btn-block command-button">
         <h4>{{command.displayName}}</h4>
         <h6 *ngIf="command.description">
             <span [innerHTML]="command.description"></span>
@@ -29,5 +33,20 @@
             <h4>{{emptyEntriesMessage}}</h4>
         </div>
     </div>
+
+    <modal #modal [keyboard]="false" [backdrop]="'static'">
+        <modal-header [show-close]="true">
+            <h4 class="modal-title">{{form.title}}</h4>
+        </modal-header>
+        <modal-body>
+            <form>
+                <form-component *ngFor="let component of form.components" [component]="component"></form-component>
+            </form>
+        </modal-body>
+        <modal-footer>
+            <button type="button" class="btn btn-default" data-dismiss="modal" (click)="modal.dismiss()">Cancel</button>
+            <button type="button" class="btn btn-primary" (click)="modal.close()">Ok</button>
+        </modal-footer>
+    </modal>
 
 </div>

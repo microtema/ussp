@@ -8,7 +8,8 @@
         'app': 'app', // 'dist',
         '@angular': 'node_modules/@angular',
         'angular2-in-memory-web-api': 'node_modules/angular2-in-memory-web-api',
-        'rxjs': 'node_modules/rxjs'
+        'rxjs': 'node_modules/rxjs',
+        'ng2-bs3-modal': 'node_modules/ng2-bs3-modal'
     };
     // packages tells the System loader how to load when no filename and/or no extension
     var packages = {
@@ -44,6 +45,7 @@
     ngPackageNames.forEach(setPackageConfig);
     var config = {
         map: map,
+        defaultJSExtensions: true,
         packages: packages
     };
     System.config(config);

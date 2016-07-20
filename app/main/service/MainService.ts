@@ -5,8 +5,8 @@ import {Injectable} from "@angular/core";
 export class MainService {
 
     tabs = [
-        new TabData("start", "Start"),
-        new TabData("opentasks", "Open Tasks", true),
+        new TabData("start", "Start", true),
+        new TabData("opentasks", "Open Tasks"),
         new TabData("credentials", "Credentials"),
         new TabData("requests", "Requests"),
         new TabData("scim", "SCIM Identities")
