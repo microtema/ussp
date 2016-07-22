@@ -11,4 +11,8 @@ export class CredentialsService {
             this.commands[this.commands.length] = new Command("Credential_" + this.commands.length, "Credential_" + this.commands.length, new Date().toISOString());
         }
     }
+
+    getCommands():Promise<Command[]> {
+        return Promise.resolve(this.commands);
+    }
 }
