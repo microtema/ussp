@@ -8,7 +8,7 @@ declare var $:any;
 @Component({
     selector: "nexus-ussp-login",
     templateUrl: "template/login/component.html",
-    providers: [CommandService, LoginService]
+    providers: [CommandService]
 })
 export class LoginComponent {
 
@@ -29,6 +29,7 @@ export class LoginComponent {
 
         this.loginService.login(this.loginForm.value).then(() => {
             $(loginModal).modal("hide");
+            console.info(this.loginService.redirectUrl);
             this.router.navigate(["main", {}]);
         }).catch(() => {
             this.errorMessage = "Unauthenticated user: Either the user name or the password you entered is not valid. Please try again.";

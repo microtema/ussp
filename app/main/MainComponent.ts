@@ -5,6 +5,7 @@ import {TasksComponent} from "./tab/tasks/TasksCompoment";
 import {CredentialsComponent} from "./tab/credentials/CredentialsComponent";
 import {RequestsComponent} from "./tab/requests/RequestsComponent";
 import {ScimComponent} from "./tab/scim/ScimComponent";
+import {AuthGuard} from "../service/AuthGuard";
 
 @Component({
     selector: "nexus-ussp-main",
