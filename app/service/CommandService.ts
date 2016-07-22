@@ -1,11 +1,38 @@
 import {Injectable} from "@angular/core";
+import {Http, Response} from '@angular/http';
+import {Observable}     from 'rxjs/Observable';
+import 'app/rxjs-operators';
 
 @Injectable()
 export class CommandService {
 
-    getCommands():Command[] {
+    constructor(private http:Http) {
+    }
+
+    getCommands(url:string):Observable<Command[]> {
+        return this.http.get(url).map(this.extractData).catch(this.handleError);
+    }
+
+    private extractData(res:Response) {
+        let body = res.json();
+        //return body.data || {};
+        return body;
+    }
+
+    private handleError(error:any) {
+        // In a real world app, we might use a remote logging infrastructure
+        // We'd also dig deeper into the error to get a better message
+        let errMsg = (error.message) ? error.message : error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+        console.error(errMsg); // log to console instead
+
+        return Observable.throw(errMsg);
+    }
+
+    getCommands2():Command[] {
         return [new Command("smartcardlogin", "Smartcard login & other"), new Command("externallink", "Custom external link"), new Command("login", "Login", null, null, true)];
     }
+
+
 }
 
 export class Command {

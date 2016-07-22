@@ -13,16 +13,23 @@ declare var $:any;
 export class LoginComponent {
 
     commands:Command[] = null;
+
     loginModalVisible = false;
+
     errorMessage:string = null;
+
     loginForm = new ControlGroup({
         userName: new Control("", Validators.required),
         password: new Control("", Validators.required)
     });
 
+    restUrl:string = "rest/process/login.json";
+
     constructor(private commandService:CommandService, private loginService:LoginService, private router:Router) {
 
-        this.commands = commandService.getCommands();
+        commandService.getCommands(this.restUrl).subscribe((commands) => {
+            this.commands = commands
+        });
     }
 
     doLogin(loginModal:HTMLElement) {

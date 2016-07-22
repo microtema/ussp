@@ -1,0 +1,15 @@
+[
+  {
+    "id": "smartcardlogin",
+    "displayName": "Smartcard login & other"
+  },
+  {
+    "id": "externallink",
+    "displayName": "Custom external link"
+  },
+  {
+    "id": "login",
+    "displayName": "Login",
+    "selected": true
+  }
+]
