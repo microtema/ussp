@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-md-3 col-md-offset-1">
+            <div class="input-group">
+                <span class="input-group-addon">Rows</span>
+                <select class="form-control rows-per-page" (change)="changePagination($event)">
+                    <option *ngFor="let option of paginationData.rowsPerPageOptions" [value]="option"
+                            [selected]="option === paginationData.rowsPerPage">
+                        {{option}}
+                    </option>
+                </select>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <nav class="pull-right">
+            <ul class="pagination">
+                <li [class.disabled]="paginationData.isFirstPageDisabled()" class="action"
+                    (click)="paginationData.firstPage()">
+                    <span aria-hidden="true">&laquo; &laquo;</span>
+                </li>
+                <li [class.disabled]="paginationData.isPrevPageDisabled()" class="action"
+                    (click)="paginationData.prevPage()">
+                    <span aria-hidden="true">&laquo;</span>
+                </li>
+                <li><span>Page {{paginationData.getCurrentPage()}}/{{paginationData.getTotalPages()}}</span></li>
+                <li [class.disabled]="paginationData.isNextPageDisabled()" class="action"
+                    (click)="paginationData.nextPage()">
+                    <span aria-hidden="true">&raquo;</span>
+                </li>
+                <li [class.disabled]="paginationData.isLastPageDisabled()" class="action"
+                    (click)="paginationData.lastPage()">
+                    <span aria-hidden="true">&raquo; &raquo;</span>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>

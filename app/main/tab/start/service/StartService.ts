@@ -57,11 +57,13 @@ export class StartService {
                     },
                     {
                         id: 5,
+                        title: "Search Person",
                         label: "Search Person",
                         type: "button",
+                        name: "Person",
+                        configNames: ["Person", "Location", "Department"],
                         url: "rest/person/search"
-                    }
-                    ,
+                    },
                     {
                         id: 6,
                         label: "Title",
@@ -78,6 +80,43 @@ export class StartService {
                         type: "password",
                         value: "secret"
                     },
+                    {
+                        id: 8,
+                        label: "E-Mail",
+                        type: "radio",
+                        name: "contact",
+                        value: "email",
+                        disabled: false,
+                        checked: false
+                    },
+                    {
+                        id: 9,
+                        label: "Post",
+                        type: "radio",
+                        name: "contact",
+                        value: "post",
+                        checked: true
+                    },
+                    {
+                        id: 10,
+                        label: "Address",
+                        type: "radio-group",
+                        name: "address",
+                        value: "home",
+                        options: [
+                            {
+                                label: "Home",
+                                value: "home"
+                            },
+                            {
+                                label: "Work",
+                                value: "work"
+                            }, {
+                                label: "Private",
+                                value: "private"
+                            }
+                        ]
+                    }
                 ]
             });
     }

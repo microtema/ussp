@@ -4,13 +4,15 @@ import {CommandPipe} from "./pipe/CommandPipe";
 import {StartService} from "./service/StartService";
 import {MODAL_DIRECTIVES, ModalComponent} from "ng2-bs3-modal/ng2-bs3-modal";
 import {FormComponent} from "../../../form/component/FormComponent";
+import {PaginationComponent, PaginationData} from "../../../directive/pagination/PaginationComponent";
+import {ItemsPerPagePipe} from "../../../pipe/ItemsPerPagePipe";
 
 @Component({
     selector: "nexus-ussp-main-start",
     templateUrl: "template/main/tab/start/template/component.html",
     providers: [StartService],
-    directives: [MODAL_DIRECTIVES, FormComponent],
-    pipes: [CommandPipe]
+    directives: [MODAL_DIRECTIVES, FormComponent, PaginationComponent],
+    pipes: [CommandPipe, ItemsPerPagePipe]
 })
 export class StartComponent {
 
@@ -25,15 +27,17 @@ export class StartComponent {
     @ViewChild('modal')
     modal:ModalComponent;
 
+    paginationData:PaginationData = new PaginationData(10);
+
     constructor(private service:StartService) {
         service.getCommands().then((commands:Command[]) => {
             this.commands = commands;
+            this.paginationData.totalRows = this.commands.length;
         });
     }
 
     executeCommand(command:Command) {
         this.service.executeCommand(command).then((form:any) => {
-            console.info("executeCommand", form);
             this.form = form;
             this.open();
         });
@@ -45,5 +49,9 @@ export class StartComponent {
 
     open() {
         this.modal.open();
+    }
+
+    onPaginationChange(paginationData:PaginationData) {
+        this.paginationData = paginationData;
     }
 }

@@ -1,0 +1,8 @@
+<span [ngSwitch]="type">
+    <span *ngSwitchCase="'String'">{{data}}</span>
+    <span *ngSwitchCase="'Date'">{{data | date: 'dd/MM/yyyy'}}</span>
+    <span *ngSwitchCase="'Boolean'">
+        <span *ngIf="data" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+    </span>
+    <span *ngSwitchDefault>{{data}} | {{type}}</span>
+</span>

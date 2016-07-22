@@ -1,0 +1,47 @@
+<button class="btn btn-default" (click)="searchModal.open()">{{component.label}}</button>
+<modal #searchModal [keyboard]="false" [backdrop]="'static'" [size]="'lg'">
+    <modal-header [show-close]="true">
+        <h4 class="modal-title">{{component.title}}</h4>
+    </modal-header>
+    <modal-body>
+        <form class="form">
+            <div class="form-group">
+                <label for="searchConfigName">Search config name:</label>
+                <div class="row">
+                    <div class="col-md-4 col-xs-4">
+                        <select class="form-control" id="searchConfigName" [(ngModel)]="searchConfigName">
+                            <option *ngFor="let option of component.configNames" [value]="option"
+                                    [selected]="option === searchConfigName">{{option}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 col-xs-6">
+                        <select class="form-control" [(ngModel)]="itemsPerPage">
+                            <option *ngFor="let item of [10,20,30,50,100]" [selected]="item === itemsPerPage" [value]="item">{{item}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-hover">
+                <thead>
+                <tr class="info">
+                    <th *ngFor="let column of searchResult.columns">{{column}}</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let row of searchResult.rows | itemsPerPage : paginationData">
+                    <td *ngFor="let data of row">
+                        <table-data [data]="data"></table-data>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+    </modal-body>
+    <modal-footer>
+        <button type="button" class="btn btn-default" data-dismiss="searchModal" (click)="searchModal.dismiss()">
+            Cancel
+        </button>
+        <button type="button" class="btn btn-primary" (click)="searchModal.close()">Ok</button>
+    </modal-footer>
+</modal>

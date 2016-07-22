@@ -6,7 +6,9 @@ export class CredentialsService {
 
     commands:Command[] = [];
 
-    getCommands():Promise<Command[]> {
-        return Promise.resolve(this.commands);
+    constructor() {
+        while (this.commands.length < 102) {
+            this.commands[this.commands.length] = new Command("Credential_" + this.commands.length, "Credential_" + this.commands.length, new Date().toISOString());
+        }
     }
 }

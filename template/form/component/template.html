@@ -19,7 +19,25 @@
             <div class="checkbox">
                 <label>
                     <input type="checkbox" [checked]="component.checked" [disabled]="component.disabled"
-                           [(ngModel)]="component.checked"> {{component.label}}
+                           [(ngModel)]="component.name"> {{component.label}}
+                </label>
+            </div>
+        </template>
+        <template [ngSwitchCase]="'radio'">
+            <div class="radio">
+                <label>
+                    <input type="radio" [checked]="component.checked" [disabled]="component.disabled"
+                           [name]="component.name"> {{component.label}}
+                </label>
+            </div>
+        </template>
+        <template [ngSwitchCase]="'radio-group'">
+            <label>{{component.label}} : {{component.value}}</label>
+            <div>
+                <label class="radio-inline" *ngFor="let radio of component.options">
+                    <input type="radio" [checked]="radio.value === component.value" [disabled]="radio.disabled"
+                           [name]="component.name" [value]="radio.value" (click)="component.value = radio.value">
+                    {{radio.label}}
                 </label>
             </div>
         </template>
@@ -33,8 +51,8 @@
             </select>
         </template>
         <template ngSwitchCase="button">
-            <button class="btn btn-default">{{component.label}}</button>
+            <search-component [component]="component" ></search-component>
         </template>
-        <template ngSwitchDefault>STOP! {{component.type}}</template>
+        <template ngSwitchDefault>STOP! Unsupported Component-Type: {{component.type}}</template>
     </p>
 </div>

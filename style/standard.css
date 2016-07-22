@@ -52,24 +52,42 @@ footer {
 }
 
 .tab-container .tasks {
-    background-image: url("/image/post.png");
+    /*background-image: url("/image/post.png");*/
 }
 
 .tab-container .credentials {
-    background-image: url("/image/credentials.png");
+    /*background-image: url("/image/credentials.png");*/
 }
 
 .tab-container .request {
-    background-image: url("/image/request.png");
+    /*background-image: url("/image/request.png");*/
 }
 
 .tab-container .scim {
-    background-image: url("/image/scim.png");
+    /*background-image: url("/image/scim.png");*/
 }
 
 .tab-container .card-production {
-    background-image: url("/image/card-production.png");
+    /*background-image: url("/image/card-production.png");*/
     background-position: right 50%;
     background-repeat: no-repeat;
     height: 40px;
+}
+
+.modal-body {
+    max-height: calc(100vh - 200px);
+    min-height: calc(100vh - 200px);
+    overflow-y: auto;
+}
+
+.pagination {
+    margin: 0;
+}
+
+.pagination li.action {
+    cursor: pointer;
+}
+
+.rows-per-page {
+    width: 75px !important;
 }
