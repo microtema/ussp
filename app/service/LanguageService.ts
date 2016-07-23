@@ -4,11 +4,11 @@ import {Injectable} from "@angular/core";
 export class LanguageService {
 
     getLanguages():Language[] {
-        return [new Language("English"), new Language("German"),new Language("France", true)];
+        return [new Language("en", "English"), new Language("de", "German", true), new Language("fr", "France")];
     }
 }
 
 export class Language {
-    constructor(public displayName:string, public selected?:boolean) {
+    constructor(public language:string, public displayName:string, public selected?:boolean) {
     }
 }

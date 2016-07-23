@@ -1,23 +1,16 @@
-import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {Component, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
     selector: 'pagination',
     templateUrl: 'template/directive/pagination/component.html'
 })
-export class PaginationComponent implements OnInit {
+export class PaginationComponent{
 
     @Input("data")
     paginationData:PaginationData = new PaginationData(10);
 
     @Output()
     onChange:EventEmitter<PaginationData> = new EventEmitter<PaginationData>(false);
-
-    constructor() {
-    }
-
-    ngOnInit() {
-
-    }
 
     changePagination(event:any) {
         this.paginationData.rowsPerPage = Number(event.target.value);

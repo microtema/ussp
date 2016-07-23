@@ -1,0 +1,8 @@
+{
+  "label.logout": "Auslogen",
+  "label.login": "Einlogen",
+  "label.password": "Passwort",
+  "label.username": "Benutzername",
+  "login.form.info": "Zum Einlogen in neXus PRIME bitten geben Sie Benutzername und Passwort ein.<br>Danach klicken Sie die 'Einlogen' Button.",
+  "login.info": "Willkommen in User Self-Service Portal von neXus PRIME!<br> In dieses User Self-Service Portal, you can manage your credentials like smart cards, smart tokens and certificates.<br>To log in with your smart card, plug the card in the card reader and click on 'Smartcard login & other'.<br>You can also select an alternative login method, while some functions may not be available then."
+}

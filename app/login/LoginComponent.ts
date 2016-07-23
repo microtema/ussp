@@ -3,12 +3,14 @@ import {Validators, ControlGroup, Control} from "@angular/common";
 import {Router}  from '@angular/router';
 import {CommandService, Command} from "../service/CommandService";
 import {LoginService} from "./service/LoginService";
+import {TranslateComponent} from "../directive/translate/TranslateComponent";
 declare var $:any;
 
 @Component({
     selector: "nexus-ussp-login",
     templateUrl: "template/login/component.html",
-    providers: [CommandService]
+    providers: [CommandService],
+    directives: [TranslateComponent]
 })
 export class LoginComponent {
 
@@ -26,7 +28,6 @@ export class LoginComponent {
     restUrl:string = "rest/process/login.json";
 
     constructor(private commandService:CommandService, private loginService:LoginService, private router:Router) {
-
         commandService.getCommands(this.restUrl).subscribe((commands) => {
             this.commands = commands
         });

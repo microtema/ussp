@@ -1,12 +1,18 @@
 import {Injectable} from "@angular/core";
-import {Command} from "../../../../service/CommandService";
+import {Command, CommandService} from "../../../../service/CommandService";
+import {Observable} from "rxjs/Rx";
 
 @Injectable()
 export class RequestsService {
 
     commands:Command[] = [];
 
-    getCommands():Promise<Command[]> {
-        return Promise.resolve(this.commands);
+    restUrl:string = "rest/process/requests.json";
+
+    constructor(private commandService:CommandService ) {
+    }
+
+    getCommands():Observable<Command[]> {
+        return this.commandService.getCommands(this.restUrl);
     }
 }

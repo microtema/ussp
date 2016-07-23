@@ -15,8 +15,7 @@ export class CommandService {
 
     private extractData(res:Response) {
         let body = res.json();
-        //return body.data || {};
-        return body;
+        return body.data || body;
     }
 
     private handleError(error:any) {
@@ -27,12 +26,6 @@ export class CommandService {
 
         return Observable.throw(errMsg);
     }
-
-    getCommands2():Command[] {
-        return [new Command("smartcardlogin", "Smartcard login & other"), new Command("externallink", "Custom external link"), new Command("login", "Login", null, null, true)];
-    }
-
-
 }
 
 export class Command {

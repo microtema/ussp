@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {Command} from "../../../service/CommandService";
+import {Command, CommandService} from "../../../service/CommandService";
 import {CommandPipe} from "../start/pipe/CommandPipe";
 import {CredentialsService} from "./service/CredentialsService";
 import {ItemsPerPagePipe} from "../../../pipe/ItemsPerPagePipe";
@@ -8,8 +8,8 @@ import {PaginationComponent, PaginationData} from "../../../directive/pagination
 @Component({
     selector: "nexus-ussp-main-credentials",
     templateUrl: "template/main/tab/credentials/template/component.html",
-    providers: [CredentialsService],
-    directives:[PaginationComponent],
+    providers: [CredentialsService, CommandService],
+    directives: [PaginationComponent],
     pipes: [CommandPipe, ItemsPerPagePipe]
 })
 export class CredentialsComponent {
@@ -24,7 +24,7 @@ export class CredentialsComponent {
     paginationData:PaginationData = new PaginationData(10);
 
     constructor(private service:CredentialsService) {
-        service.getCommands().then((commands:Command[]) => {
+        service.getCommands().subscribe((commands:Command[]) => {
             this.commands = commands;
             this.paginationData.totalRows = this.commands.length;
         });

@@ -1,17 +1,25 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {LanguageService, Language} from "./service/LanguageService"
 import {BuildInfoService, BuildInfo} from "./service/BuildInfoService";
 import {ROUTER_DIRECTIVES, RouterLink} from '@angular/router';
 import {LoginService} from "./login/service/LoginService";
+import {
+    TRANSLATE_PROVIDERS,
+    TranslateService,
+    TranslateLoader,
+    TranslateStaticLoader
+} from 'ng2-translate/ng2-translate';
+import {Http} from "@angular/http";
+import {TranslateComponent} from "./directive/translate/TranslateComponent";
 declare var $:any;
 
 @Component({
     selector: "nexus-ussp",
     templateUrl: "template/component.html",
-    providers: [LanguageService, BuildInfoService],
-    directives: [ROUTER_DIRECTIVES, RouterLink]
+    providers: [LanguageService, BuildInfoService, TranslateService],
+    directives: [ROUTER_DIRECTIVES, RouterLink, TranslateComponent]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
     languages:Language[] = null;
 
@@ -19,21 +27,20 @@ export class AppComponent {
 
     buildInfo:BuildInfo = null;
 
-    constructor(private languageService:LanguageService, private buildInfoService:BuildInfoService, private loginService:LoginService) {
+    constructor(private languageService:LanguageService, private buildInfoService:BuildInfoService, private loginService:LoginService, private translate:TranslateService) {
 
-        this.languages = languageService.getLanguages();
-        this.selectedLanguage = this.languages[2];
-
-        this.buildInfo = buildInfoService.getBuildInfo();
+        this.languages = this.languageService.getLanguages();
+        this.selectedLanguage = this.languages.find(lang => lang.selected);
+        this.buildInfo = this.buildInfoService.getBuildInfo();
     }
 
-
-    get selectLanguage() {
-        return this.selectedLanguage;
+    ngOnInit() {
+        this.changeLanguage(this.selectedLanguage);
     }
 
-    set selectLanguage(selectedLanguage:Language) {
+    changeLanguage(selectedLanguage:Language) {
         this.selectedLanguage = selectedLanguage;
+        this.translate.use(this.selectedLanguage.language);
     }
 
     isLoggedIn():boolean {
