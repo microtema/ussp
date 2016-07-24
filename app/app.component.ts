@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
     constructor(private languageService:LanguageService, private buildInfoService:BuildInfoService, private loginService:LoginService, private translate:TranslateService) {
 
         this.languages = this.languageService.getLanguages();
-        this.selectedLanguage = this.languages.find(lang => lang.selected);
+        this.selectedLanguage = this.languages.find(lang => lang.selected) || this.languages[0];
         this.buildInfo = this.buildInfoService.getBuildInfo();
     }
 
@@ -40,6 +40,7 @@ export class AppComponent implements OnInit {
 
     changeLanguage(selectedLanguage:Language) {
         this.selectedLanguage = selectedLanguage;
+        this.languageService.setLanguage(this.selectedLanguage);
         this.translate.use(this.selectedLanguage.language);
     }
 

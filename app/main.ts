@@ -7,7 +7,9 @@ import {
     TranslateLoader
 } from "ng2-translate/ng2-translate";
 import {PLATFORM_PIPES} from "@angular/core";
+import {CookieService} from "angular2-cookie/core";
 bootstrap(AppComponent, [appRouterProviders, HTTP_PROVIDERS,
+    [CookieService],
     [
         {
             provide: TranslateLoader,
