@@ -1,8 +1,9 @@
 import {Component, OnInit, Input} from '@angular/core';
 
 @Component({
+    moduleId: module.id,
     selector: 'table-data',
-    templateUrl: 'template/directive/table-data/component.html'
+    templateUrl: 'template.html'
 })
 export class TableDataComponent implements OnInit {
 
@@ -11,10 +12,7 @@ export class TableDataComponent implements OnInit {
     @Input("data")
     data:any;
 
-    constructor() {
-    }
-
     ngOnInit() {
-        this.type = this.data.constructor.name;
+        this.type = (this.data != null || this.data != undefined) ? this.data.constructor.name : 'undefined';
     }
 }

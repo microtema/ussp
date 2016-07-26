@@ -1,10 +1,11 @@
 import {Component, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
+    moduleId: module.id,
     selector: 'pagination',
-    templateUrl: 'template/directive/pagination/component.html'
+    templateUrl: 'template.html'
 })
-export class PaginationComponent{
+export class PaginationComponent {
 
     @Input("data")
     paginationData:PaginationData = new PaginationData(10);

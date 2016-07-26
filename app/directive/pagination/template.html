@@ -21,7 +21,7 @@
                     (click)="paginationData.prevPage()">
                     <span aria-hidden="true">&laquo;</span>
                 </li>
-                <li><span>Page {{paginationData.getCurrentPage()}}/{{paginationData.getTotalPages()}}</span></li>
+                <li class="page-display"><span>Page {{paginationData.getCurrentPage()}}/{{paginationData.getTotalPages()}}</span></li>
                 <li [class.disabled]="paginationData.isNextPageDisabled()" class="action"
                     (click)="paginationData.nextPage()">
                     <span aria-hidden="true">&raquo;</span>

@@ -42,6 +42,10 @@ module.exports = function(config) {
             {pattern: 'node_modules/@angular/**/*.js', included: false, watched: false},
             {pattern: 'node_modules/@angular/**/*.js.map', included: false, watched: false},
 
+            // ng2-translate
+            {pattern: 'node_modules/ng2-translate/**/*.js', included: false, watched: false},
+            {pattern: 'node_modules/ng2-translate/**/*.js.map', included: false, watched: false},
+
             {pattern: 'systemjs.config.js', included: false, watched: false},
             'karma-test-shim.js',
 
